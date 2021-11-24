@@ -1,33 +1,36 @@
-import logo from "./../logo.svg";
-import "./../App.css";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import { getArticles } from "./../redux/actions/articles";
+import "./../styles/index.css";
 
 function Home({ articles, dispatch }) {
   console.log(articles);
 
-  useEffect(async () => {
-    await dispatch(getArticles());
-    console.log("AFTER DISPATCH", articles);
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      await dispatch(getArticles());
+      console.log("AFTER DISPATCH", articles.articlesData);
+    }
+    fetchData();
+  }, [articles.articlesData]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Article List</h2>
+      <p>This is article list.</p>
+      <div className="row">
+        {articles.articlesData.map((item, index) => {
+          return (
+            <div className="column">
+              <div className="card">
+                <h3>{item.title}</h3>
+                <p>{item.author}</p>
+                <p>{item.description.slice(0, 100)}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
