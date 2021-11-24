@@ -1,18 +1,18 @@
 import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { getArticles } from "./../redux/actions/articles";
 import "./../styles/index.css";
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
 function Home({ articles, dispatch }) {
-  console.log(articles);
+  console.log(articles.articlesData);
+
+  const fetchArticles = useCallback(() => {
+    dispatch(getArticles());
+  }, [dispatch]);
 
   useEffect(() => {
-    async function fetchData() {
-      await dispatch(getArticles());
-      console.log("AFTER DISPATCH", articles.articlesData);
-    }
-    fetchData();
-  }, [articles.articlesData]);
+    fetchArticles();
+  }, [fetchArticles]);
 
   return (
     <div>
@@ -21,7 +21,7 @@ function Home({ articles, dispatch }) {
       <div className="row">
         {articles.articlesData.map((item, index) => {
           return (
-            <div className="column">
+            <div className="column" key={index}>
               <div className="card">
                 <h3>{item.title}</h3>
                 <p>{item.author}</p>

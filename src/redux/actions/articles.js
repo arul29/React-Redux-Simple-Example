@@ -1,33 +1,4 @@
-const articlesApi = [
-  {
-    id: 1,
-    author: "George Orwell",
-    title: "Lorem Ipsum",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    id: 2,
-    author: "Douglas Adams",
-    title: "Dolor Sit Amet",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    id: 3,
-    author: "George Orwell",
-    title: "Lorem Ipsum",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-  {
-    id: 4,
-    author: "Douglas Adams",
-    title: "Dolor Sit Amet",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  },
-];
+import { articlesApi } from "../../databases";
 
 export function getArticles() {
   return {
@@ -35,17 +6,3 @@ export function getArticles() {
     payload: articlesApi,
   };
 }
-
-// export function getArticles(article) {
-//   return {
-//     type: "GET_BOOK",
-//     payload: article,
-//   };
-// }
-
-// export function deleteBook(book) {
-//   return {
-//     type: types.DELETE_BOOK,
-//     payload: book,
-//   };
-// }
