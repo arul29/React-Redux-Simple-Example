@@ -1,11 +1,15 @@
-const articlesData = [];
+const initialState = {
+  articlesData: [],
+};
 
-const articles = (prevState = articlesData, action) => {
+const articles = (prevState = initialState, action) => {
   switch (action.type) {
     case "GET_ARTICLE":
-      const newArticle = action.payload;
-      const newState = articlesData.push(newArticle);
-      return { articlesData: newState };
+      const newState = {
+        ...prevState,
+        articlesData: action.payload,
+      };
+      return newState;
 
     default:
       return prevState;
