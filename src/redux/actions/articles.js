@@ -1,8 +1,17 @@
-import { articlesApi } from "../../databases";
+import { articlesApi } from "../../database";
+
+const articlesData = articlesApi;
 
 export function getArticles() {
   return {
     type: "GET_ARTICLE",
-    payload: articlesApi,
+    payload: articlesData,
   };
 }
+
+// export function searchArticles(keyword) {
+//   return {
+//     type: "SEARCH_ARTICLE",
+//     payload: keyword,
+//   };
+// }
