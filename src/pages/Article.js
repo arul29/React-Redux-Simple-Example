@@ -9,9 +9,10 @@ export default function Article() {
         <p>{articleData.author}</p>
       </div>
       <div className="container">
-        <div class="row">
-          <div class="col-8">
+        <div className="row">
+          <div className="col-8">
             <img
+              alt="cover"
               width="50%"
               className="mx-auto d-block"
               src={articleData.image}
