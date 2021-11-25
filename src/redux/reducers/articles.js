@@ -3,20 +3,18 @@ const initialArticles = [];
 const articles = (prevState = initialArticles, action) => {
   switch (action.type) {
     case "GET_ARTICLE":
-      console.log("ACTION PAYLOAD", action.payload);
-      const articlesData = action.payload;
-      return articlesData;
+      return action.payload;
 
     case "SEARCH_ARTICLE":
-      let updatedList = action.payload.data;
-      updatedList = updatedList.filter(function (item) {
+      let updateSearch = action.payload.data;
+      updateSearch = updateSearch.filter(function (item) {
         return (
           item.title
             .toLowerCase()
             .search(action.payload.keyword.toLowerCase()) !== -1
         );
       });
-      return updatedList;
+      return updateSearch;
 
     default:
       return prevState;
