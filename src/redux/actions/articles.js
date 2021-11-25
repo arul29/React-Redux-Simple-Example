@@ -5,7 +5,7 @@ const articlesData = articlesApi;
 export function getArticles() {
   return {
     type: "GET_ARTICLE",
-    payload: articlesData,
+    payload: { data: articlesData },
   };
 }
 

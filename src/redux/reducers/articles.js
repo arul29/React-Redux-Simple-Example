@@ -3,7 +3,7 @@ const initialArticles = [];
 const articles = (prevState = initialArticles, action) => {
   switch (action.type) {
     case "GET_ARTICLE":
-      return { articlesData: action.payload };
+      return { articlesData: action.payload.data };
 
     case "SEARCH_ARTICLE":
       let updateSearch = action.payload.data;
