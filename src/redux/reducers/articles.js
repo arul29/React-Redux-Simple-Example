@@ -3,7 +3,7 @@ const initialArticles = [];
 const articles = (prevState = initialArticles, action) => {
   switch (action.type) {
     case "GET_ARTICLE":
-      return action.payload;
+      return { articlesData: action.payload };
 
     case "SEARCH_ARTICLE":
       let updateSearch = action.payload.data;
@@ -14,10 +14,10 @@ const articles = (prevState = initialArticles, action) => {
             .search(action.payload.keyword.toLowerCase()) !== -1
         );
       });
-      return updateSearch;
+      return { articlesData: updateSearch };
 
     default:
-      return prevState;
+      return { articlesData: prevState };
   }
 };
 
