@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { getArticles, searchArticles } from "./../redux/actions/articles";
-import "./../styles/index.css";
 import { Link } from "react-router-dom";
+import "./../styles/index.css";
 // eslint-disable-next-line react-hooks/exhaustive-deps
 function Home({ articles, dispatch }) {
-  console.log(articles);
+  const { articlesData } = articles;
 
   const fetchArticles = useCallback(() => {
     dispatch(getArticles());
@@ -43,7 +43,7 @@ function Home({ articles, dispatch }) {
         </div>
       </div>
       <div className="row">
-        {articles.map((item, index) => {
+        {articlesData.map((item, index) => {
           return (
             <div className="column" key={index}>
               <div className="card">
