@@ -1,15 +1,23 @@
 import { connect } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { getArticles } from "./../redux/actions/articles";
+import { getArticles, searchArticles } from "./../redux/actions/articles";
 import "./../styles/index.css";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line react-hooks/exhaustive-deps
 function Home({ articles, dispatch }) {
-  console.log(articles.articlesData);
+  console.log(articles);
 
   const fetchArticles = useCallback(() => {
     dispatch(getArticles());
   }, [dispatch]);
+
+  const handleSearchArticles = useCallback(
+    (keyword) => {
+      console.log(keyword);
+      dispatch(searchArticles(keyword));
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     fetchArticles();
@@ -20,17 +28,27 @@ function Home({ articles, dispatch }) {
       <div className="jumbotron">
         <h1>
           <span className="glyphicon glyphicon-picture" aria-hidden="true" />{" "}
-          Artikel
+          Article
         </h1>
-        <p>Daftar Artikel</p>
+        {/* <p>Daftar Artikel</p> */}
+        <div className="form">
+          <label>Search Article</label>
+          <input
+            onChange={(e) => handleSearchArticles(e.target.value)}
+            type="text"
+            placeholder="Insert keyword"
+            className="form-control"
+            id="usr"
+          />
+        </div>
       </div>
       <div className="row">
-        {articles.articlesData.map((item, index) => {
+        {articles.map((item, index) => {
           return (
             <div className="column" key={index}>
               <div className="card">
                 <Link to={`/article`} state={{ articleData: item }}>
-                  <img width="100%" src={item.image} />
+                  <img alt="cover" width="100%" src={item.image} />
                 </Link>
                 <h3>{item.title}</h3>
                 <p>{item.author}</p>

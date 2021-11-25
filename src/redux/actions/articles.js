@@ -9,9 +9,9 @@ export function getArticles() {
   };
 }
 
-// export function searchArticles(keyword) {
-//   return {
-//     type: "SEARCH_ARTICLE",
-//     payload: keyword,
-//   };
-// }
+export function searchArticles(keyword) {
+  return {
+    type: "SEARCH_ARTICLE",
+    payload: { keyword: keyword, data: articlesData },
+  };
+}
